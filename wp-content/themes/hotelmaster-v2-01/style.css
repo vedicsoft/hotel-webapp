@@ -28,7 +28,7 @@ Text Domain: gdlr_translate
 -------------------------------------------------------------------*/
 
 /*--- reset ---*/
-/*--- reset5 Â© 2011 opensource.736cs.com MIT ---*/
+/*--- reset5 Ã‚Â© 2011 opensource.736cs.com MIT ---*/
 html,body,div,span,applet,object,iframe,
 h1,h2,h3,h4,h5,h6,p,blockquote,
 pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,
@@ -1427,10 +1427,10 @@ only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device
 	select:focus, textarea:focus, input:focus { font-size: 16px; }
 }
 
-.body-wrapper.gdlr-boxed-style {
+/*.body-wrapper.gdlr-boxed-style {
 	max-width: 1440px !important;
 	margin: 0px 0px 0px 0px !important;
-}
+}*/
 
 .master-slider{
 	margin: 0px 0px 0px 0px !important;

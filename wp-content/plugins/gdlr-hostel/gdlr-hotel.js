@@ -322,6 +322,12 @@
 					if( !$(this).hasClass('gdlr-clicked') ){
 						$(this).addClass('gdlr-clicked');
 						area.content_area.find('.gdlr-error-message').slideUp();
+						main.createUser({
+							command:"registration",
+							username:$("#contact-username").val(),
+							email:$("#contact-email").val(),
+							password:$("#contact-password").val()
+						});
 						main.change_state({ state: 3, contact: $(this).closest('form'), 'contact_type': 'contact' });
 					}
 					return false; 
@@ -335,10 +341,32 @@
 					}
 					return false; 
 				});
-				
+
+				area.content_area.on('change', '#toggle',function(){
+					if (!this.checked) {
+						$('.message').hide();
+					}else{
+						$('.message').show();
+					}
+				});
+
 				// payment method selection
 				area.content_area.on('click', '.gdlr-payment-method input[name="payment-method"]',function(){
 					$(this).parent('label').addClass('gdlr-active').siblings().removeClass('gdlr-active');
+				});
+			},
+
+			createUser: function(options){
+				$.ajax({
+					url: '/yourhotel-service.php',
+					type: 'POST',
+					data: JSON.stringify(options),
+					contentType: "application/json",
+					error: function () {
+					},
+					success: function (data) {
+						console.log(data);
+					}
 				});
 			},
 			

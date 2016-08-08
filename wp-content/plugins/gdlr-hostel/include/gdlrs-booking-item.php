@@ -527,7 +527,7 @@
 		<div class="clear"></div>
 		<div class="gdlr-error-message"></div>
 		
-		<a class="gdlr-button with-border gdlr-booking-contact-submit"><?php _e('Book now by email and we will contact you back.', 'gdlr-hotel'); ?></a>
+		<a class="gdlr-button with-border gdlr-booking-contact-submit"><?php _e('Book Now', 'gdlr-hotel'); ?></a>
 		
 		<?php 
 			if( $hostel_option['payment-method'] == 'instant' ){ 

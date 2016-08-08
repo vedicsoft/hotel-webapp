@@ -172,7 +172,7 @@
 	padding-left: 0px; padding-right: 0px; margin: 32px 0px 0px; }
 .gdlr-hotel-availability .gdlr-reservation-field span { display: block; font-size: 14px; line-height: 20px; margin-bottom: 12px; }
 
-.gdlr-hotel-availability input.gdlr-datepicker { font-size: 13px; padding: 13px 15px; height: 16px; width: 100%; cursor: pointer; }
+.gdlr-hotel-availability input.gdlr-datepicker { font-size: 13px; padding: 13px 15px; width: 100%; cursor: pointer; }
 .gdlr-hotel-availability .gdlr-datepicker-wrapper:after { font-family: fontAwesome; content: "\f073"; 
 	position: absolute; right: 15px; top: 11px; pointer-events: none; cursor: pointer; }
 .gdlr-hotel-availability .gdlr-datepicker-wrapper { margin-right: 20px; padding-right: 30px; position: relative; }

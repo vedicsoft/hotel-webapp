@@ -57,7 +57,7 @@ if( !function_exists('gdlr_hotel_include_script') ){
 		
 		wp_enqueue_script('jquery-ui-core');
 		wp_enqueue_script('jquery-ui-datepicker');
-		wp_enqueue_script('hotel-script', plugins_url('gdlr-hotel.js', __FILE__), array(), '1.0.0', true );
+		wp_enqueue_script('hotel-script', plugins_url('gitgdlr-hotel.js', __FILE__), array(), '1.0.0', true );
 		
 		// ref : https://gist.github.com/clubduece/4053820
 		global $wp_locale;

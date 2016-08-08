@@ -648,7 +648,7 @@ if ( ! class_exists( 'Wpgmp_Google_Map_Lite' ) ) {
 			if ( ! defined( 'WPGMP_ICONS' ) ) {
 				define( 'WPGMP_ICONS', WPGMP_URL.'/assets/images/icons/' );
 			}
-			$upload_dir = wp_upload_dir();
+			/*$upload_dir = wp_upload_dir();
 			if ( ! defined( 'WPGMP_BACKUP' ) ) {
 
 				if ( ! is_dir( $upload_dir['basedir'].'/maps-backup' ) ) {
@@ -657,7 +657,7 @@ if ( ! class_exists( 'Wpgmp_Google_Map_Lite' ) ) {
 				define( 'WPGMP_BACKUP',$upload_dir['basedir'].'/maps-backup/' );
 				define( 'WPGMP_BACKUP_URL',$upload_dir['baseurl'].'/maps-backup/' );
 
-			}
+			}*/
 
 			if ( ! defined( 'TBL_LOCATION' ) ) {
 				define( 'TBL_LOCATION', $wpdb->prefix.'map_locations' );

@@ -463,7 +463,7 @@
 	}
 	
 	$(document).ready(function(){
-		
+
 		// init the booking page
 		$('#gdlr-single-booking-content').gdlr_hotel_booking();
 		

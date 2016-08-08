@@ -420,7 +420,6 @@
 			'guest' => __('Guest', 'gdlr-hotel'),
 			'room' => __('Room', 'gdlr-hotel'),
 		);
-
 		foreach( $services as $service ){
 			$active = in_array($service, $selected_service);
 			$option = json_decode(gdlr_decode_preventslashes(get_post_meta($service, 'post-option', true)), true);
@@ -473,31 +472,37 @@
 	<form class="gdlr-booking-contact-form" method="post" data-ajax="<?php echo AJAX_URL; ?>">
 		<p class="gdlr-form-half-left">
 			<span><?php _e('First Name *', 'gdlr-hotel'); ?></span>
-			<input type="text" name="first_name" value="" />
+			<input type="text" name="first_name" value="Allan" id="contact-username"/>
 		</p>
 		<p class="gdlr-form-half-right">
 			 <span><?php _e('Last Name *', 'gdlr-hotel'); ?></span>
-			 <input type="text" name="last_name" value="" />
+			 <input type="text" name="last_name" value="Alexander" />
 		</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span><?php _e('Email *', 'gdlr-hotel'); ?></span>
-			<input type="text" name="email" value="" />
+			<input type="text" name="email" value="allan@vedicsoft.net"  id="contact-email"/>
 		</p>
 		<p class="gdlr-form-half-right">
 			 <span><?php _e('Phone *', 'gdlr-hotel'); ?></span>
-			 <input type="text" name="phone" value="" />
+			 <input type="text" name="phone" value="+02312-3123-1424" />
 		</p>
 		<div class="clear"></div>
-		<p>Address Details *</p>
 		<p class="gdlr-form-half-left">
-			<span><?php _e('Country', 'gdlr-hotel'); ?></span>
-			<input type="text" name="country" value="" />
+			<input type="checkbox" name="toggle" id="toggle" /> Create New Account
 		</p>
-		<p class="gdlr-form-half-right">
-			<span><?php _e('City', 'gdlr-hotel'); ?></span>
-			<input type="text" name="city" value="" />
-		</p>
+		<div class="clear"></div>
+		<div class="message">
+			<p class="gdlr-form-half-left">
+				<span><?php _e('Password *', 'gdlr-password'); ?></span>
+				<input type="password" name="password" id="contact-password" value="sandun" />
+			</p>
+			<p class="gdlr-form-half-right">
+				<span><?php _e('Confirm Password *', 'gdlr-confirmpassword'); ?></span>
+				<input type="password" name="Confirm Password" value="sandun" />
+			</p>
+		</div>
+		<p>Address Details *</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span><?php _e('State', 'gdlr-hotel'); ?></span>
@@ -510,21 +515,17 @@
 		<div class="clear"></div>
 		<p>Additional Details *</p>
 		<p class="gdlr-form-half-left">
-			<span><?php _e('SSIN *', 'gdlr-hotel'); ?></span>
-			<input type="text" name="ssin" value="" />
+			<span><?php _e('Age', 'gdlr-hotel'); ?></span>
+			<input type="text" name="age" value="29" />
 		</p>
 		<p class="gdlr-form-half-right">
-			<span><?php _e('Age', 'gdlr-hotel'); ?></span>
-			<input type="text" name="age" value="" />
+			<span><?php _e('Marital status *', 'gdlr-hotel'); ?></span>
+			<input type="text" name="marital" value="male" />
 		</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
-			<span><?php _e('Marital status *', 'gdlr-hotel'); ?></span>
-			<input type="text" name="marital" value="" />
-		</p>
-		<p class="gdlr-form-half-right">
 			<span><?php _e('Additional Note', 'gdlr-hotel'); ?></span>
-			<textarea name="additional-note" ></textarea>
+			<textarea name="additional-note" value="Thank you"></textarea>
 		</p>
 		<div class="clear"></div>
 		<p>Payment Details *</p>
@@ -540,40 +541,41 @@
 			</div>
 		</div>
 		<div id="paymentimg-container" class="gdlr-form-half-right">
-			<span><img src="http://localhost:8888/wordpress/wp-content/themes/hotelmaster-v2-01/images/paymenticons/amazon.jpg"/></span>
-			<span><img src="http://localhost:8888/wordpress/wp-content/themes/hotelmaster-v2-01/images/paymenticons/mastercard.jpg"/></span>
-			<span><img src="http://localhost:8888/wordpress/wp-content/themes/hotelmaster-v2-01/images/paymenticons/visa.jpg"/></span>
-			<span><img src="http://localhost:8888/wordpress/wp-content/themes/hotelmaster-v2-01/images/paymenticons/visa-electron.jpg"/></span>
-			<span><img src="http://localhost:8888/wordpress/wp-content/themes/hotelmaster-v2-01/images/paymenticons/paypal.jpg"/></span>
+			<?php
+			echo '<span><img src="' . plugins_url('paymenticons/amazon.jpg', __FILE__) . '" alt="amazon" /></span>';
+			echo '<span><img src="' . plugins_url('paymenticons/mastercard.jpg', __FILE__) . '" alt="mastercard" /></span>';
+			echo '<span><img src="' . plugins_url('paymenticons/visa.jpg', __FILE__) . '" alt="visa" /></span>';
+			echo '<span><img src="' . plugins_url('paymenticons/visa-electron.jpg', __FILE__) . '" alt="visa-electron" /></span>';
+			echo '<span><img src="' . plugins_url('paymenticons/paypal.jpg', __FILE__) . '" alt="paypal" /></span>';
+			?>
 		</div>
 		<div class="clear"></div>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span>Cardholder Name</span>
-			<input type="text" name="phone" value="" />
+			<input type="text" name="phone" value="Test 1" />
 		</p>
 		<p class="gdlr-form-half-right">
 			<span>Card Number</span>
-			<input type="text" name="" value="" />
+			<input type="text" name="" value="Test2" />
 		</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span>Expiration Date</span>
-			<input type="text" name="phone" value="" />
+			<input type="text" name="phone" value="Test3" />
 		</p>
-		<div class="clear"></div>
-		<p class="gdlr-form-coupon">
-			<span>Coupon</span>
-			<input type="text" name="coupon" value="" />
+		<p class="gdlr-form-half-right">
+			<span>CVV Code</span>
+			<input type="text" name="" value="Test 4" />
 		</p>
 		<div class="clear"></div>
 		<div class="gdlr-error-message"></div>
-		<a class="gdlr-button with-border gdlr-booking-contact-submit"><?php _e('Book now by email and we will contact you back.', 'gdlr-hotel'); ?></a>
-		
+		<a class="gdlr-button with-border gdlr-booking-contact-submit"><?php _e('Book Now.', 'gdlr-hotel'); ?></a>
+
 		<?php 
 			if( $hotel_option['payment-method'] == 'instant' ){ 
 				echo '<div class="gdlr-booking-contact-or">' . __('Or', 'gdlr-hotel');
-				echo '<div class="gdlr-booking-contact-or-divider gdlr-left"></div>';
+				echo '<div class="gdlr-booki ng-contact-or-divider gdlr-left"></div>';
 				echo '<div class="gdlr-booking-contact-or-divider gdlr-right"></div>';
 				echo '</div>';
 			
@@ -628,7 +630,7 @@
 				$ret .= '</div>';
 				
 				$ret .= '<div class="gdlr-booking-complete-caption" >';
-				$ret .= __('Your reservation details have just been sent to your email. If you have any question, please don\'t hesitate to contact us. Thank you!', 'gdlr-hotel'); 
+				$ret .= __('Your reservation details have just been submitted. If you have any question, please don\'t hesitate to contact us. Thank you!', 'gdlr-hotel');
 				$ret .= '</div>';
 				
 				if( !empty($hotel_option['booking-complete-contact']) ){

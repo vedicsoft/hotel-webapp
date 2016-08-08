@@ -749,4 +749,12 @@
 		$(window).trigger('scroll');
 	});
 
+	$('#toggle').on('change', function() {
+		if (!this.checked) {
+			$('.message').hide();
+		}else{
+			$('.message').show();
+		}
+	});
+
 })(jQuery);

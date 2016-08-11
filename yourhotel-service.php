@@ -1,17 +1,16 @@
 <?php
 
-$host = "localhost:3306"; // Host name
-$username = "root"; // Mysql username
-$password = "5876114027"; // Mysql password
-$db_name = "yourhotel"; // Database name
-$tbl_name = "users"; // Table name
+include 'DatabaseConnection.php';
 
-$conn = new mysqli($host, $username, $password, $db_name);
+
+$instance =  DatabaseConnection::getInstance("yourhotel");
+$conn = $instance->getConnection();
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}else{
+    echo "Connected Succesfully";
 }
-
 
 if (isset($_GET['command'])) {
     $command = $_GET['command'];

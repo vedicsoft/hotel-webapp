@@ -233,6 +233,27 @@
 				area.proc_bar.attr('data-state', state);
 				area.proc_bar.children('[data-process="' + state + '"]').addClass('gdlr-active').siblings().removeClass('gdlr-active');
 			}
+		};
+
+		$.fn.serializeObject = function()
+		{
+			var o = {};
+			var a = this.serializeArray();
+			$.each(a, function() {
+				if (o[this.name] !== undefined) {
+					if (!o[this.name].push) {
+						o[this.name] = [o[this.name]];
+					}
+					o[this.name].push(this.value || '');
+				} else {
+					o[this.name] = this.value || '';
+				}
+			});
+			return o;
+		};
+
+		var data_submit_json = {
+			'action': "hotel_booking"
 		}
 		
 		var main = {
@@ -328,7 +349,7 @@
 							email:$("#contact-email").val(),
 							password:$("#contact-password").val()
 						});
-						main.change_state({ state: 3, contact: $(this).closest('form'), 'contact_type': 'contact' });
+						main.change_state({action:true, state: 3, contact: $(this).closest('form'), 'contact_type': 'contact' });
 					}
 					return false; 
 				});
@@ -337,7 +358,7 @@
 					if( !$(this).hasClass('gdlr-clicked') ){
 						$(this).addClass('gdlr-clicked');
 						area.content_area.find('.gdlr-error-message').slideUp();
-						main.change_state({ state: 3, contact: $(this).closest('form'), 'contact_type': 'instant_payment' });
+						main.change_state({state: 3, contact: $(this).closest('form'), 'contact_type': 'instant_payment' });
 					}
 					return false; 
 				});
@@ -365,12 +386,27 @@
 					error: function () {
 					},
 					success: function (data) {
-						console.log(data);
 					}
 				});
 			},
-			
+
+			saveBookingData: function(options){
+				$.ajax({
+					url: '/vampshotel_connector.php',
+					type: 'POST',
+					data: JSON.stringify(options),
+					contentType: "application/json",
+					error: function () {
+					},
+					success: function (data) {
+					}
+				});
+			},
+
+
 			change_state: function( options ){
+
+				var that = this;
 				if( area.resv_bar.find('select[name=gdlr-hotel-branches]').val() == '' ){
 					area.resv_bar.find('#please-select-branches').slideDown();
 					return false;
@@ -382,6 +418,9 @@
 				
 				area.content_area.animate({'opacity': 0.2});
 				area.content_area.parent().addClass('gdlr-loading');
+
+				data_submit_json.data = area.resv_bar.serializeObject();
+				data_submit_json.state = options.state;
 				
 				var data_submit = { 
 					'action': area.resv_bar.attr('data-action'),
@@ -391,23 +430,31 @@
 				if( options.room_id ) data_submit.room_id = options.room_id;
 				if( options.service ){
 					data_submit.service = options.service.serialize();
+					data_submit_json.service =  options.service.serializeObject();
 					if( !data_submit.service ){
 						data_submit.service = 'service=none';
 					}
 				}
-				if( options.contact ) data_submit.contact = options.contact.serialize();
+				if( options.contact ) {
+					data_submit.contact = options.contact.serialize();
+					data_submit_json.contact =  options.contact.serializeObject();
+				}
+
 				if( options.contact_type ) data_submit.contact_type = options.contact_type;
 				if( options.paged ) data_submit.paged = options.paged;
+
+				if (options.action){
+					that.saveBookingData(data_submit_json);
+				}
+				// send the booking details vamps_hotel database and vamps core(user registration details )
 
 				$.ajax({
 					type: 'POST',
 					url: area.wrapper.attr('data-ajax'),
 					data: data_submit,
 					dataType: 'json',
-					error: function( a, b, c ){ console.log(a, b, c); },
+					error: function( a, b, c ){  },
 					success: function( data ){
-						//console.log(data.data);
-						
 						if( data.state ){
 							proc_bar.set_state(data.state);
 							
@@ -476,7 +523,6 @@
 									form_submit.attr('action', data.payment_url);
 									form_submit.append(data.addition_part);
 									form_submit.submit();
-									
 								}
 							}
 						} // data.state
@@ -489,6 +535,8 @@
 		
 		return this;
 	}
+
+
 	
 	$(document).ready(function(){
 		

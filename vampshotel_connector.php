@@ -68,8 +68,6 @@ if (isset($_GET['command'])) {
 $data = $HTTP_RAW_POST_DATA;
 $obj = json_decode($data);
 
-echo var_dump($obj);
-
 if ($obj->action == 'hotel_booking') {
 
     $userdetails = $obj->contact;

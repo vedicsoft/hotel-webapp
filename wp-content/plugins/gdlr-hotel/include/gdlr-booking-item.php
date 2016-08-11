@@ -494,12 +494,12 @@
 		<div class="clear"></div>
 		<div class="message">
 			<p class="gdlr-form-half-left">
-				<span><?php _e('Password *', 'gdlr-password'); ?></span>
+				<span><?php _e('User Name *', 'gdlr-hotel'); ?></span>
 				<input type="password" name="password" id="contact-password"  />
 			</p>
 			<p class="gdlr-form-half-right">
-				<span><?php _e('Confirm Password *', 'gdlr-confirmpassword'); ?></span>
-				<input type="password" name="Confirm Password"  />
+				<span><?php _e('Confirm Password *', 'gdlr-hotel'); ?></span>
+				<input type="password" name="password"  />
 			</p>
 		</div>
 		<p>Address Details *</p>
@@ -532,7 +532,7 @@
 		<div class="paymentbar gdlr-form-half-left">
 			<div class="gdlr-combobox-wrapper">
 				<span for="sel1">Payment Type</span>
-				<select  id="sel1">
+				<select  id="sel1" name="payment_method">
 					<option>Master</option>
 					<option>Amazon</option>
 					<option>Paypal</option>
@@ -553,20 +553,20 @@
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span>Cardholder Name</span>
-			<input type="text" name="phone" value="Test 1" />
+			<input type="text" name="card_holdername" value="Test 1" />
 		</p>
 		<p class="gdlr-form-half-right">
 			<span>Card Number</span>
-			<input type="text" name="" value="Test2" />
+			<input type="text" name="card_number" value="Test2" />
 		</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span>Expiration Date</span>
-			<input type="text" name="phone" value="Test3" />
+			<input type="text" name="expiration_date" value="Test3" />
 		</p>
 		<p class="gdlr-form-half-right">
 			<span>CVV Code</span>
-			<input type="text" name="" value="Test 4" />
+			<input type="text" name="cvv_code" value="Test 4" />
 		</p>
 		<div class="clear"></div>
 		<div class="gdlr-error-message"></div>

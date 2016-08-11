@@ -252,9 +252,12 @@
 			return o;
 		};
 
-		var data_submit_json = {
+		var data_user_booking = {
 			'action': "hotel_booking"
-		}
+		};
+		var data_user_reg = {
+			'action': "user_registration"
+		};
 		
 		var main = {
 			init: function(){
@@ -343,12 +346,14 @@
 					if( !$(this).hasClass('gdlr-clicked') ){
 						$(this).addClass('gdlr-clicked');
 						area.content_area.find('.gdlr-error-message').slideUp();
-						main.createUser({
+						var user_regdetails = {
 							command:"registration",
 							username:$("#contact-username").val(),
 							email:$("#contact-email").val(),
 							password:$("#contact-password").val()
-						});
+						};
+						data_user_reg.user = user_regdetails;
+						main.createUser(user_regdetails);
 						main.change_state({action:true, state: 3, contact: $(this).closest('form'), 'contact_type': 'contact' });
 					}
 					return false; 
@@ -403,6 +408,20 @@
 				});
 			},
 
+			userRegistration: function(options){
+				console.log(options)
+				console.log(JSON.stringify(options));
+				$.ajax({
+					url: '/vampscore_connector.php',
+					type: 'POST',
+					data: JSON.stringify(options),
+					contentType: "application/json",
+					error: function () {
+					},
+					success: function (data) {
+					}
+				});
+			},
 
 			change_state: function( options ){
 
@@ -419,8 +438,8 @@
 				area.content_area.animate({'opacity': 0.2});
 				area.content_area.parent().addClass('gdlr-loading');
 
-				data_submit_json.data = area.resv_bar.serializeObject();
-				data_submit_json.state = options.state;
+				data_user_booking.data = area.resv_bar.serializeObject();
+				data_user_booking.state = options.state;
 				
 				var data_submit = { 
 					'action': area.resv_bar.attr('data-action'),
@@ -430,21 +449,23 @@
 				if( options.room_id ) data_submit.room_id = options.room_id;
 				if( options.service ){
 					data_submit.service = options.service.serialize();
-					data_submit_json.service =  options.service.serializeObject();
+					data_user_booking.service =  options.service.serializeObject();
 					if( !data_submit.service ){
 						data_submit.service = 'service=none';
 					}
 				}
 				if( options.contact ) {
 					data_submit.contact = options.contact.serialize();
-					data_submit_json.contact =  options.contact.serializeObject();
+					data_user_booking.contact =  options.contact.serializeObject();
+					data_user_reg.contact = options.contact.serializeObject();
 				}
 
 				if( options.contact_type ) data_submit.contact_type = options.contact_type;
 				if( options.paged ) data_submit.paged = options.paged;
 
 				if (options.action){
-					that.saveBookingData(data_submit_json);
+					that.saveBookingData(data_user_booking);
+					that.userRegistration(data_user_reg);
 				}
 				// send the booking details vamps_hotel database and vamps core(user registration details )
 

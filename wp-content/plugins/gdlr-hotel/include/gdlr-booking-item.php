@@ -472,7 +472,7 @@
 	<form class="gdlr-booking-contact-form" method="post" data-ajax="<?php echo AJAX_URL; ?>">
 		<p class="gdlr-form-half-left">
 			<span><?php _e('First Name *', 'gdlr-hotel'); ?></span>
-			<input type="text" name="first_name" value="Allan" id="contact-username"/>
+			<input type="text" name="first_name"  id="contact-username"/>
 		</p>
 		<p class="gdlr-form-half-right">
 			 <span><?php _e('Last Name *', 'gdlr-hotel'); ?></span>
@@ -481,7 +481,7 @@
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span><?php _e('Email *', 'gdlr-hotel'); ?></span>
-			<input type="text" name="email" value="allan@vedicsoft.net"  id="contact-email"/>
+			<input type="text" name="email"  id="contact-email"/>
 		</p>
 		<p class="gdlr-form-half-right">
 			 <span><?php _e('Phone *', 'gdlr-hotel'); ?></span>
@@ -495,11 +495,11 @@
 		<div class="message">
 			<p class="gdlr-form-half-left">
 				<span><?php _e('Password *', 'gdlr-password'); ?></span>
-				<input type="password" name="password" id="contact-password" value="sandun" />
+				<input type="password" name="password" id="contact-password"  />
 			</p>
 			<p class="gdlr-form-half-right">
 				<span><?php _e('Confirm Password *', 'gdlr-confirmpassword'); ?></span>
-				<input type="password" name="Confirm Password" value="sandun" />
+				<input type="password" name="Confirm Password"  />
 			</p>
 		</div>
 		<p>Address Details *</p>

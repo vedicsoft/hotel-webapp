@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Sandun
- * Date: 8/11/16
- * Time: 2:35 PM
- */
 
 include 'DatabaseConnection.php';
 
@@ -13,8 +7,50 @@ $conn = $instance->getConnection();
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-}else{
-    echo "Connected Succesfully";
+}
+
+
+// GET REQUEST
+if (isset($_GET['command'])) {
+    $command = $_GET['command'];
+    if ($command == 'login') {
+        $email = $_GET['email'];
+        $password = $_GET['password'];
+        $query = "SELECT username, email FROM wf_users WHERE email='" . $email . "' and password = '" . $password . "'";
+        $result = $conn->query($query);
+        $count = $result->num_rows;
+        if ($count > 0) {
+            while ($user = $result->fetch_assoc()) {
+                $userdetails = $user;
+            }
+            $response = array("status" => $count, "user" => $userdetails);
+            echo json_encode($response);
+        } else {
+            $response = array("status" => $count);
+            echo json_encode($response);
+        }
+    } else if ($command == 'registration') {
+        try {
+            echo $_GET['name'];
+            $stmt = $conn->prepare("INSERT INTO hotels ( name, address,city,latitude,longitude) VALUES (?,?,?,?,?)");
+
+            $stmt->bind_param("sssss", $name, $address, $city, $latitude, $longitude);
+
+            $name = isset($_GET['name']) ? $_GET['name'] : '';
+            $address = isset($_GET['address']) ? $_GET['address'] : '';
+            $city = isset($_GET['city']) ? $_GET['city'] : '';
+            $latitude = isset($_GET['latitude']) ? $_GET['latitude'] : '';
+            $longitude = isset($_GET['longitude']) ? $_GET['longitude'] : '';
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }
 
 // POST Requests

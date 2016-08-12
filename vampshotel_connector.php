@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Sandun
- * Date: 8/11/16
- * Time: 2:35 PM
- */
 
 include 'DatabaseConnection.php';
 
@@ -17,9 +11,7 @@ if ($conn->connect_error) {
     echo "Connected Succesfully";
 }
 
-
 // GET Requests
-
 if (isset($_GET['command'])) {
     $command = $_GET['command'];
     if ($command == 'login') {
@@ -62,42 +54,92 @@ if (isset($_GET['command'])) {
     }
 }
 
+/*$json = file_get_contents('php://input');
+  $obj = json_decode($json);*/
 
-// POST Requests
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$data = $HTTP_RAW_POST_DATA;
-$obj = json_decode($data);
+    if (isset($_POST['action']) && $_POST['action'] == 'update_status') {
+        try {
+            $updatestatus = "UPDATE h_booking SET status = ? WHERE username= ?";
+            $stmt = $conn->prepare($updatestatus);
 
-if ($obj->action == 'hotel_booking') {
+            $stmt->bind_param("ss",$is_arrived , $username);
 
-    $userdetails = $obj->contact;
-    $userbooking = $obj->data;
+            $username = isset($_POST['username']) ? $_POST['username'] : '';
+            $is_arrived = isset($_POST['is_arrived']) ? $_POST['is_arrived'] : '';
 
-    try {
-        $stmt = $conn->prepare("INSERT INTO h_booking (username, email, check_in, check_out, nights, room_id, room_number, no_of_adults, no_of_childrens, pay_deposite) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-        $stmt->bind_param("ssssiiiiii", $username, $email, $checkin, $checkout, $nights, $roomid, $room_number, $no_of_adults, $no_of_childrens, $deposit);
-
-        $username = isset($userdetails->first_name) ? $userdetails->first_name : '';
-        $email = isset($userdetails->email) ? $userdetails->email : '';
-        $checkin = isset($userbooking->{'gdlr-check-in'}) ? $userbooking->{'gdlr-check-in'} : null;
-        $checkout = isset($userbooking->{'gdlr-check-out'}) ? $userbooking->{'gdlr-check-out'} : null;
-        $nights = isset($userbooking->{'gdlr-night'}) ? $userbooking->{'gdlr-night'} : 0;
-        $roomid = isset($userbooking->{'gdlr-room-id[]'}) ? $userbooking->{'gdlr-room-id[]'} : 0;
-        $room_number = isset($userbooking->{'gdlr-room-number'}) ? $userbooking->{'gdlr-room-number'} : 0;
-        $no_of_adults = isset($userbooking->{'gdlr-adult-number[]'}) ? $userbooking->{'gdlr-adult-number[]'} : 0;
-        $no_of_childrens = isset($userbooking->{'gdlr-children-number[]'}) ? $userbooking->{'gdlr-children-number[]'} : 0;
-        $deposit = isset($userbooking->{'pay_deposit'}) ? $userbooking->{'pay_deposit'} : 0;
-
-        if (!$stmt->execute()) {
-            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-        } else {
-            echo "New records created successfully";
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+    }
+
+    if (isset($_POST['action']) && $_POST['action'] == 'update_keyissued') {
+        try {
+            $updatestatus = "UPDATE h_booking SET key_issued = ? WHERE username= ?";
+            $stmt = $conn->prepare($updatestatus);
+
+            $stmt->bind_param("ss",$key_issued , $username);
+
+            $username = isset($_POST['username']) ? $_POST['username'] : '';
+            $key_issued = isset($_POST['key_issued']) ? $_POST['key_issued'] : '';
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+    // need to test
+
+    $data = $HTTP_RAW_POST_DATA;
+    $obj = json_decode($data);
+
+    if ($obj->action == 'hotel_booking') {
+
+        $userdetails = $obj->contact;
+        $userbooking = $obj->data;
+
+        try {
+            $stmt = $conn->prepare("INSERT INTO h_booking (username, email, check_in, check_out, nights, room_id, room_number, no_of_adults, no_of_childrens, pay_deposite) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            $stmt->bind_param("ssssiiiiii", $username, $email, $checkin, $checkout, $nights, $roomid, $room_number, $no_of_adults, $no_of_childrens, $deposit);
+
+            $username = isset($userdetails->first_name) ? $userdetails->first_name : '';
+            $email = isset($userdetails->email) ? $userdetails->email : '';
+            $checkin = isset($userbooking->{'gdlr-check-in'}) ? $userbooking->{'gdlr-check-in'} : null;
+            $checkout = isset($userbooking->{'gdlr-check-out'}) ? $userbooking->{'gdlr-check-out'} : null;
+            $nights = isset($userbooking->{'gdlr-night'}) ? $userbooking->{'gdlr-night'} : 0;
+            $roomid = isset($userbooking->{'gdlr-room-id[]'}) ? $userbooking->{'gdlr-room-id[]'} : 0;
+            $room_number = isset($userbooking->{'gdlr-room-number'}) ? $userbooking->{'gdlr-room-number'} : 0;
+            $no_of_adults = isset($userbooking->{'gdlr-adult-number[]'}) ? $userbooking->{'gdlr-adult-number[]'} : 0;
+            $no_of_childrens = isset($userbooking->{'gdlr-children-number[]'}) ? $userbooking->{'gdlr-children-number[]'} : 0;
+            $deposit = isset($userbooking->{'pay_deposit'}) ? $userbooking->{'pay_deposit'} : 0;
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 }
 
+
+// POST Requests
+
 $conn->close();
+
 ?>

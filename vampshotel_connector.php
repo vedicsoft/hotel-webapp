@@ -7,19 +7,19 @@
  */
 
 include 'DatabaseConnection.php';
+include 'crm.php';
 
-$instance =  DatabaseConnection::getInstance("vamps_hotel");
+$instance = DatabaseConnection::getInstance("vamps_hotel");
 $conn = $instance->getConnection();
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-}else{
+} else {
     echo "Connected Succesfully";
 }
 
 
 // GET Requests
-
 if (isset($_GET['command'])) {
     $command = $_GET['command'];
     if ($command == 'login') {
@@ -62,10 +62,8 @@ if (isset($_GET['command'])) {
     }
 }
 
-
 // POST Requests
-
-$data = $HTTP_RAW_POST_DATA;
+$data = file_get_contents('php://input');
 $obj = json_decode($data);
 
 if ($obj->action == 'hotel_booking') {
@@ -92,6 +90,40 @@ if ($obj->action == 'hotel_booking') {
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         } else {
+            $crm_username_2 = array(
+                "name" => "name",
+                "value" => $username
+            );
+            $crm_roomtype = array(
+                "name" => "roomtype",
+                "value" => "king"
+            );
+            $crm_checkin = array(
+                "name" => "checkin",
+                "value" => $checkin
+            );
+            $crm_checkout = array(
+                "name" => "checkout",
+                "value" => $checkout
+            );
+            $crm_no_of_adults = array(
+                "name" => "no_of_adults",
+                "value" => $no_of_adults
+            );
+            $crm_no_of_children = array(
+                "name" => "no_of_children",
+                "value" => $no_of_childrens
+            );
+
+            $reservation_data = array(
+                $crm_username_2,
+                $crm_roomtype,
+                $crm_checkin,
+                $crm_checkout,
+                $crm_no_of_adults,
+                $crm_no_of_children);
+
+            pushReservationToCRM($reservation_data);
             echo "New records created successfully";
         }
     } catch (PDOException $e) {
@@ -100,4 +132,3 @@ if ($obj->action == 'hotel_booking') {
 }
 
 $conn->close();
-?>

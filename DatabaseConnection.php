@@ -11,7 +11,7 @@ class DatabaseConnection {
     private static $_instance; //The single instance
     private static $_host = "localhost:3306";
     private static $_username = "root";
-    private static $_password = "5876114027";
+    private static $_password = "root";
 
     public static function getInstance($_database) {
         self::$_connection = new mysqli(self::$_host,self::$_username,

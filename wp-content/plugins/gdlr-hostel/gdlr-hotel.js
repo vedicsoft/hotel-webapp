@@ -353,7 +353,7 @@
 							password:$("#contact-password").val()
 						};
 						data_user_reg.user = user_regdetails;
-						main.createUser(user_regdetails);
+						//main.createUser(user_regdetails);
 						main.change_state({action:true, state: 3, contact: $(this).closest('form'), 'contact_type': 'contact' });
 					}
 					return false; 
@@ -384,7 +384,7 @@
 
 			createUser: function(options){
 				$.ajax({
-					url: '/yourhotel-service.php',
+					url: 'yourhotel-service.php',
 					type: 'POST',
 					data: JSON.stringify(options),
 					contentType: "application/json",
@@ -397,7 +397,7 @@
 
 			saveBookingData: function(options){
 				$.ajax({
-					url: '/vampshotel_connector.php',
+					url: 'vampshotel_connector.php',
 					type: 'POST',
 					data: JSON.stringify(options),
 					contentType: "application/json",
@@ -409,10 +409,8 @@
 			},
 
 			userRegistration: function(options){
-				console.log(options)
-				console.log(JSON.stringify(options));
 				$.ajax({
-					url: '/vampscore_connector.php',
+					url: 'vampscore_connector.php',
 					type: 'POST',
 					data: JSON.stringify(options),
 					contentType: "application/json",

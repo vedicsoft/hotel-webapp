@@ -9,17 +9,18 @@
 include 'DatabaseConnection.php';
 include 'crm.php';
 
-$instance = DatabaseConnection::getInstance("vamps_hotel");
+$instance =  DatabaseConnection::getInstance("vamps_hotel");
 $conn = $instance->getConnection();
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} else {
+}else{
     echo "Connected Succesfully";
 }
 
 
 // GET Requests
+
 if (isset($_GET['command'])) {
     $command = $_GET['command'];
     if ($command == 'login') {
@@ -62,9 +63,56 @@ if (isset($_GET['command'])) {
     }
 }
 
-// POST Requests
-$data = file_get_contents('php://input');
-$obj = json_decode($data);
+/*$json = file_get_contents('php://input');
+  $obj = json_decode($json);*/
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if (isset($_POST['action']) && $_POST['action'] == 'update_status') {
+        try {
+            $updatestatus = "UPDATE h_booking SET status = ? WHERE username= ?";
+            $stmt = $conn->prepare($updatestatus);
+
+            $stmt->bind_param("ss",$is_arrived , $username);
+
+            $username = isset($_POST['username']) ? $_POST['username'] : '';
+            $is_arrived = isset($_POST['is_arrived']) ? $_POST['is_arrived'] : '';
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    if (isset($_POST['action']) && $_POST['action'] == 'update_keyissued') {
+        try {
+            $updatestatus = "UPDATE h_booking SET key_issued = ? WHERE username= ?";
+            $stmt = $conn->prepare($updatestatus);
+
+            $stmt->bind_param("ss",$key_issued , $username);
+
+            $username = isset($_POST['username']) ? $_POST['username'] : '';
+            $key_issued = isset($_POST['key_issued']) ? $_POST['key_issued'] : '';
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+    // need to test
+
+    $data = file_get_contents('php://input');
+    $obj = json_decode($data);
 
 if ($obj->action == 'hotel_booking') {
 

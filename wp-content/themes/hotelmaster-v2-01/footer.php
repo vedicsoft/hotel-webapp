@@ -38,11 +38,12 @@
 		<div class="copyright-wrapper">
 			<div class="copyright-container container">
 				<div class="copyright-left">
-					<?php if( !empty($theme_option['copyright-left-text']) ) echo gdlr_text_filter(gdlr_escape_string($theme_option['copyright-left-text'])); ?>
+					 <a href="http://hotel.vedicsoft.com/about-us/">About</a> | <a href="#">Contact</a>
+					<?php //if( !empty($theme_option['copyright-left-text'])) echo //gdlr_text_filter(gdlr_escape_string($theme_option['copyright-left-text'])); ?>
 				</div>
 				<div class="copyright-right">
 					<?php if( !empty($theme_option['copyright-right-text']) ) echo gdlr_text_filter(gdlr_escape_string($theme_option['copyright-right-text'])); ?>
-					Shared by <!-- Please Do Not Remove Shared Credits Link --><a href='http://www.themes24x7.com/' id="sd">Themes24x7</a><!-- Please Do Not Remove Shared Credits Link -->
+					Shared by <!-- Please Do Not Remove Shared Credits Link --><a href='http://www.vedicsoft.com/' id="sd">Vedicsoft</a><!-- Please Do Not Remove Shared Credits Link -->
 				</div>
 				<div class="clear"></div>
 			</div>

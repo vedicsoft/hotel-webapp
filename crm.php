@@ -1,5 +1,5 @@
 <?php
-$crm_url = "http://ec2-52-10-227-189.us-west-2.compute.amazonaws.com/crm/service/v4_1/rest.php";
+$crm_url = "http://vamps.vedicsoft.net/crm/service/v4_1/rest.php";
 $crm_username = "crmadmin";
 $crm_password = "Vsoft@123";
 

@@ -18,7 +18,7 @@ class DatabaseConnection {
             self::$_password, $_database);
         // Error handling
         if(mysqli_connect_error()) {
-            trigger_error("Failed to conencto to MySQL: " . mysql_connect_error(),
+            trigger_error("Failed to connect to MySQL: " . mysql_connect_error(),
                 E_USER_ERROR);
         }
         if(!self::$_instance) { // If no instance then make one

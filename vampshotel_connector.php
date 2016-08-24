@@ -180,3 +180,4 @@ if ($obj->action == 'hotel_booking') {
 }
 
 $conn->close();
+}

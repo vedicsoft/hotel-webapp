@@ -155,12 +155,16 @@ if ($obj->action == 'hotel_booking') {
                 "value" => $checkout
             );
             $crm_no_of_adults = array(
-                "name" => "no_of_adults",
+                "name" => "no_of_adult",
                 "value" => $no_of_adults
             );
             $crm_no_of_children = array(
                 "name" => "no_of_children",
                 "value" => $no_of_childrens
+            );
+            $crm_assigned_user_id = array(
+                "name" => "assigned_user_id",
+                "value" => 1
             );
 
             $reservation_data = array(
@@ -169,7 +173,8 @@ if ($obj->action == 'hotel_booking') {
                 $crm_checkin,
                 $crm_checkout,
                 $crm_no_of_adults,
-                $crm_no_of_children);
+                $crm_no_of_children,
+                $crm_assigned_user_id);
 
             pushReservationToCRM($reservation_data);
             echo "New records created successfully";

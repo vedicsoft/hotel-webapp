@@ -505,12 +505,27 @@
 		<p>Address Details *</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
+			<span><?php _e('Street', 'gdlr-hotel'); ?></span>
+			<input type="text" name="street" value="" />
+		</p>
+		<p class="gdlr-form-half-right">
+			<span><?php _e('City', 'gdlr-hotel'); ?></span>
+			<input type="text" name="city" value="" />
+		</p>
+
+		<p class="gdlr-form-half-left">
 			<span><?php _e('State', 'gdlr-hotel'); ?></span>
 			<input type="text" name="state" value="" />
 		</p>
+
 		<p class="gdlr-form-half-right">
-			<span><?php _e('Street', 'gdlr-hotel'); ?></span>
-			<input type="text" name="street" value="" />
+			<span><?php _e('Postal Code', 'gdlr-hotel'); ?></span>
+			<input type="text" name="postalcode" value="" />
+		</p>
+
+		<p class="gdlr-form-half-right">
+			<span><?php _e('Country', 'gdlr-hotel'); ?></span>
+			<input type="text" name="country" value="" />
 		</p>
 		<div class="clear"></div>
 		<p>Additional Details *</p>
@@ -520,12 +535,16 @@
 		</p>
 		<p class="gdlr-form-half-right">
 			<span><?php _e('Marital status *', 'gdlr-hotel'); ?></span>
-			<input type="text" name="marital" value="male" />
+			<input type="text" name="marital" value="unmarried" />
 		</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
+			<span><?php _e('Gender', 'gdlr-hotel'); ?></span>
+			<input type="text" name="gender" value="male" />
+		</p>
+		<p class="gdlr-form-half-right">
 			<span><?php _e('Additional Note', 'gdlr-hotel'); ?></span>
-			<textarea name="additional-note" value="Thank you"></textarea>
+			<textarea name="additional-note" value=""></textarea>
 		</p>
 		<div class="clear"></div>
 		<p>Payment Details *</p>
@@ -553,20 +572,20 @@
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span>Cardholder Name</span>
-			<input type="text" name="card_holdername" value="Test 1" />
+			<input type="text" name="card_holdername" value="Name" />
 		</p>
 		<p class="gdlr-form-half-right">
 			<span>Card Number</span>
-			<input type="text" name="card_number" value="Test2" />
+			<input type="text" name="card_number" value="Card Number" />
 		</p>
 		<div class="clear"></div>
 		<p class="gdlr-form-half-left">
 			<span>Expiration Date</span>
-			<input type="text" name="expiration_date" value="Test3" />
+			<input type="text" name="expiration_date" value="Expiration Date" />
 		</p>
 		<p class="gdlr-form-half-right">
 			<span>CVV Code</span>
-			<input type="text" name="cvv_code" value="Test 4" />
+			<input type="text" name="cvv_code" value="Code" />
 		</p>
 		<div class="clear"></div>
 		<div class="gdlr-error-message"></div>

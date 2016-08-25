@@ -95,7 +95,14 @@ if ($obj->action == 'user_registration') {
         $last_name = isset($userdetails->last_name) ? $userdetails->last_name : '';
         $mobile_number = isset($userdetails->phone) ? $userdetails->phone : '';
         $marital_status = isset($userdetails->marital) ? $userdetails->marital : '';
+        $age = isset($userdetails->age) ? $userdetails->age : 0;
+        $gender = isset($userdetails->gender) ? $userdetails->gender : '';
 
+        $street = isset($userdetails->street) ? $userdetails->street : '';
+        $city = isset($userdetails->city) ? $userdetails->city : '';
+        $state = isset($userdetails->state) ? $userdetails->state : '';
+        $postalcode = isset($userdetails->postalcode) ? $userdetails->postalcode : '';
+        $country = isset($userdetails->country) ? $userdetails->country : '';
 
 
     /*  $account_status = isset($userdetails->account_status) ? $userdetails->account_status : '';
@@ -122,7 +129,7 @@ if ($obj->action == 'user_registration') {
                 "value" => $last_name
             );
             $crm_email = array(
-                "name" => "email",
+                "name" => "email1",
                 "value" => $email
             );
             $crm_phone_mobile = array(
@@ -130,11 +137,53 @@ if ($obj->action == 'user_registration') {
                 "value" => $mobile_number
             );
 
+            $crm_age = array(
+                "name" => "age_c",
+                "value" => $age
+            );
+
+            $crm_gender = array(
+                "name" => "gender_c",
+                "value" => $gender
+            );
+
+            $crm_address_street = array(
+                "name" => "primary_address_street",
+                "value" => $street
+            );
+
+            $crm_address_city = array(
+                "name" => "primary_address_city",
+                "value" => $city
+            );
+
+            $crm_address_state = array(
+                "name" => "primary_address_state",
+                "value" => $state
+            );
+
+            $crm_address_country = array(
+                "name" => "primary_address_country",
+                "value" => $country
+            );
+
+            $crm_address_postalcode = array(
+                "name" => "primary_address_postalcode",
+                "value" => $postalcode
+            );
+
             $crm_registration_data = array(
                 $crm_first_name,
                 $crm_last_name,
                 $crm_email,
-                $crm_phone_mobile);
+                $crm_phone_mobile,
+                $crm_age,
+                $crm_gender,
+                $crm_address_street,
+                $crm_address_city,
+                $crm_address_state,
+                $crm_address_country,
+                $crm_address_postalcode);
             
             registerCRMUser($crm_registration_data);
             echo "New records created successfully";

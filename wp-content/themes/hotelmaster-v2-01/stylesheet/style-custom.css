@@ -1,18 +1,15 @@
 body{ background: url('http://themes.goodlayers2.com/hotelmaster/wp-content/uploads/2015/03/bg-pattern.png'); }
 html.ltie9 body, body{ min-width: 1140px; } .container{ max-width: 1140px; } .gdlr-caption-wrapper .gdlr-caption-inner{ max-width: 1140px; }
-/*.body-wrapper.gdlr-boxed-style{
-	!*max-width: 1220px;*!
-} */
-.body-wrapper.gdlr-boxed-style .gdlr-header-wrapper{ max-width: 1220px; margin: 0px auto; }
+.body-wrapper.gdlr-boxed-style{ max-width: 1220px; } .body-wrapper.gdlr-boxed-style .gdlr-header-wrapper{ max-width: 1220px; margin: 0px auto; }
 .gdlr-logo{ max-width: 320px; }
 .gdlr-logo{ margin-top: 37px; }
 .gdlr-logo{ margin-bottom: 41px; }
 .gdlr-navigation-wrapper{ margin-top: 60px; }
-h1, h2, h3, h4, h5, h6, .gdlr-title-font{ font-family: 'Roboto', sans-serif; }
-body, input, textarea, select{ font-family: 'Roboto', sans-serif; }
-.gdlr-navigation{ font-family: 'Roboto', serif; }
-.gdlr-slider-item{ font-family: 'Roboto', sans-serif; }
-body{  font-size: 14px; }
+h1, h2, h3, h4, h5, h6, .gdlr-title-font{ font-family: "Open Sans"; }
+body, input, textarea, select{ font-family: "Merriweather"; }
+.gdlr-navigation{ font-family: "Droid Serif"; }
+.gdlr-slider-item{ font-family: "Open Sans"; }
+body{ font-size: 14px; }
 h1{ font-size: 47px; }
 h2{ font-size: 41px; }
 h3{ font-size: 32px; }
@@ -27,6 +24,8 @@ h6{ font-size: 16px; }
 .gdlr-main-menu > li > a{ color: #7f7f7f; }
 .gdlr-main-menu > li:hover > a, .gdlr-main-menu > li.current-menu-item > a, .gdlr-main-menu > li.current-menu-ancestor > a{ color: #555555; opacity: 1; filter: alpha(opacity=100); }
 .gdlr-navigation-gimmick{ background-color: #aa8667; }
+.gdlr-header-transparent .gdlr-main-menu > li > a{ color: #ffffff; }
+.gdlr-header-transparent .gdlr-main-menu > li:hover > a, .gdlr-header-transparent .gdlr-main-menu > li.current-menu-item > a, .gdlr-header-transparent .gdlr-main-menu > li.current-menu-ancestor > a{ color: #ffffff; }.gdlr-header-transparent div#gdlr-navigation-gimmick { background-color: #ffffff; }
 .gdlr-main-menu > .gdlr-normal-menu .sub-menu, .gdlr-main-menu > .gdlr-mega-menu .sf-mega{ border-top-color: #1c1c1c; }
 .gdlr-main-menu > .gdlr-normal-menu li , .gdlr-main-menu > .gdlr-mega-menu .sf-mega{ background-color: #2e2e2e; }
 .gdlr-main-menu > li > .sub-menu a, .gdlr-main-menu > li > .sf-mega a{ color: #bebebe; }
@@ -136,8 +135,11 @@ table.style-2 tr:nth-child(even){ color: #949494; }
 .gdlr-pagination .page-numbers:hover, .gdlr-pagination .page-numbers.current{ background-color: #b89f80; }
 .gdlr-pagination .page-numbers:hover, .gdlr-pagination .page-numbers.current{ color: #ffffff; }
 .single .gdlr-room-title{ color: #260701; }
+.single .gdlr-room-info{ background-color: #f5f5f5; }
+.single .gdlr-room-info{ color: #888888; }
 .gdlr-classic-room .gdlr-room-title a, .gdlr-modern-room .gdlr-room-title a,.gdlr-medium-room .gdlr-room-title a{ color: #7e6648; }
 .gdlr-classic-room .gdlr-room-title a:hover, .gdlr-modern-room .gdlr-room-title a:hover,.gdlr-medium-room .gdlr-room-title a:hover{ color: #7e6648; }
+{ color: #7e6648; }
 .single .gdlr-room-price .gdlr-tail, .gdlr-classic-room .gdlr-room-price .gdlr-tail,.gdlr-medium-room .gdlr-room-price .gdlr-tail, .gdlr-room-service-unit{ color: #74b7d3; }
 .gdlr-modern-room .gdlr-room-detail{ color: #787878; }
 .gdlr-medium-room .gdlr-hotel-room-info{ border-color: #cbbca9; }
@@ -147,6 +149,18 @@ table.style-2 tr:nth-child(even){ color: #949494; }
 .price-breakdown-wrapper .price-breakdown-content, .price-breakdown-wrapper .price-breakdown-total{ border-color: #e6e6e6; }
 .price-breakdown-wrapper .price-breakdown-total .gdlr-head, .price-breakdown-wrapper .price-breakdown-info .gdlr-head{ color: #232323; }
 .price-breakdown-wrapper .price-breakdown-info .gdlr-head span,.price-breakdown-wrapper .price-breakdown-total .gdlr-head span{ color: #a2a2a2; }
+.gdlr-booking-contact-form .gdlr-payment-method label:hover img, .gdlr-booking-contact-form .gdlr-payment-method label.gdlr-active img{ border-color: #72afd5; }
+.gdlr-booking-contact-form .gdlr-booking-payment-submit{ background-color: #81bad3; }
+.gdlr-booking-contact-form .gdlr-booking-payment-submit{ border-color: #4a87a2; }
+.gdlr-reservation-bar .gdlr-price-summary-wrapper, .gdlr-price-summary-grand-total.gdlr-active, .gdlr-price-deposit-wrapper .gdlr-price-deposit-input span.gdlr-active{ color: #ffffff; }.gdlr-price-deposit-input .gdlr-radio-input { background: #ffffff; }.gdlr-price-deposit-input .gdlr-radio-input { border: 3px solid #ffffff !important; }
+.gdlr-price-summary-grand-total, .gdlr-service-price-summary-item, .gdlr-reservation-bar .gdlr-price-room-summary, .gdlr-reservation-bar .gdlr-price-room-summary-info, .gdlr-price-deposit-wrapper .gdlr-price-deposit-caption, .gdlr-price-deposit-wrapper .gdlr-price-deposit-input span{ color: #eae0d4; }
+.gdlr-reservation-bar .gdlr-price-summary-wrapper *{ border-color: #d0c1af; }
+.gdlr-price-summary-wrapper .gdlr-edit-booking-button{ background-color: #967f63; }
+.gdlr-price-summary-wrapper .gdlr-edit-booking-button{ border-color: #826e54; }
+.gdlr-booking-failed, .gdlr-booking-complete, .gdlr-room-selection-complete{ background-color: #f5f5f5; }
+.gdlr-room-selection-complete .gdlr-room-selection-caption{ color: #8d8d8d; }
+.gdlr-room-selection-complete .gdlr-room-selection-caption{ border-bottom-color: #e5e5e5; }
+.gdlr-booking-failed .gdlr-booking-failed-title, .gdlr-booking-complete .gdlr-booking-complete-title, .gdlr-booking-service-head, .gdlr-room-service-title, .gdlr-booking-complete .gdlr-booking-complete-additional i, .gdlr-room-selection-complete .gdlr-room-selection-title{ color: #484848; }
 .gdlr-datepicker-range-wrapper, .ui-datepicker{ background-color: #f3f3f3; }
 .ui-datepicker-title, .ui-datepicker th{ color: #4b4b4b; }
 .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next, .ui-state-default, .ui-state-default:hover { background-color: #ffffff; }
@@ -163,8 +177,16 @@ table.style-2 tr:nth-child(even){ color: #949494; }
 .gdlr-reservation-bar .gdlr-reservation-bar-title{ border-color: #a38363; }
 .gdlr-reservation-bar input.gdlr-datepicker, .gdlr-reservation-bar .gdlr-combobox-wrapper select, .gdlr-reservation-bar .gdlr-combobox-wrapper select option, .gdlr-reservation-bar .gdlr-combobox-wrapper{ background-color: #e2e2e2; }
 .gdlr-reservation-bar input.gdlr-datepicker, .gdlr-reservation-bar .gdlr-combobox-wrapper select{ color: #262626; }
+.gdlr-reservation-bar .gdlr-datepicker-wrapper:after, .gdlr-reservation-bar .gdlr-combobox-wrapper:after{ color: #000000; }
+.gdlr-reservation-bar .gdlr-reservation-bar-room-form{ background-color: #d0c1af; }
 .gdlr-reservation-room{ color: #000000; }
 .gdlr-reservation-room.gdlr-active{ color: #ffffff; }
+.gdlr-reservation-room .gdlr-reservation-change-room{ color: #5b95ae; }
+.gdlr-reservation-bar .gdlr-reservation-bar-button{ background-color: #977b58; }
+.gdlr-reservation-bar .gdlr-reservation-bar-button{ color: #ffffff; }
+.gdlr-reservation-bar .gdlr-reservation-bar-button{ border-color: #7d6444; }
+.gdlr-price-summary-hotel-branches{ background-color: #51392B; }
+.gdlr-price-summary-hotel-branches{ color: #ffffff; }
 .gdlr-personnel-item .personnel-item-inner{ background-color: #f5f5f5; }
 .gdlr-personnel-item.round-style .personnel-item{ background-color: #b89f80; }
 .gdlr-personnel-item .personnel-author{ color: #3b3b3b; }
@@ -199,7 +221,7 @@ body .nivo-directionNav a, body .flex-direction-nav a, body .flex-direction-nav 
 .gdlr-item-title-wrapper .gdlr-flex-prev:hover, .gdlr-item-title-wrapper .gdlr-flex-next:hover{ background-color: #b89f80; }
 .gdlr-item-title-wrapper .gdlr-flex-prev:hover, .gdlr-item-title-wrapper .gdlr-flex-next:hover{ color: #ffffff; }
 input[type="text"], input[type="email"], input[type="password"], textarea, .gdlr-hotel-availability .gdlr-combobox-wrapper{ background-color: #f5f5f5; }
-input[type="text"], input[type="email"], input[type="password"], textarea, .gdlr-hotel-availability .gdlr-combobox-wrapper select{ color: #828282; } input::-webkit-input-placeholder{ color:#828282; }input::-moz-placeholder{ color:#828282; } input:-moz-placeholder{ color:#828282; }input:-ms-input-placeholder{ color:#828282; } textarea::-webkit-input-placeholder{ color:#828282; }textarea::-moz-placeholder{ color:#828282; } textarea:-moz-placeholder{ color:#828282; }textarea:-ms-input-placeholder{ color:#828282; }
+input[type="text"], input[type="email"], input[type="password"], textarea, .gdlr-hotel-availability .gdlr-combobox-wrapper select{ color: #828282; }input::input-placeholder{ color:#828282; } input::-webkit-input-placeholder{ color:#828282; }input::-moz-placeholder{ color:#828282; } input:-moz-placeholder{ color:#828282; }input:-ms-input-placeholder{ color:#828282; }textarea::input-placeholder{ color:#828282; } textarea::-webkit-input-placeholder{ color:#828282; }textarea::-moz-placeholder{ color:#828282; } textarea:-moz-placeholder{ color:#828282; }textarea:-ms-input-placeholder{ color:#828282; }
 .footer-wrapper{ background-color: #f3f3f3; }
 .footer-wrapper .gdlr-widget-title, .footer-wrapper .gdlr-widget-title a{ color: #424242; }
 .footer-wrapper{ color: #7a7a7a; }
@@ -245,9 +267,9 @@ html .woocommerce .quantity .minus, html .woocommerce #content .quantity .minus,
 .gdlr-skin-dark-skin a:hover, .gdlr-skin-dark-skin .gdlr-skin-link:hover{ color: #ffffff; }
 .gdlr-skin-dark-skin .gdlr-skin-box, .gdlr-skin-dark-skin .gdlr-column-service-item .gdlr-skin-box, .gdlr-skin-dark-skin .gdlr-flex-prev, .gdlr-skin-dark-skin .gdlr-flex-next{ background-color: #969696; }
 .gdlr-skin-dark-skin *, .gdlr-skin-dark-skin .gdlr-skin-border{ border-color: #ffffff; }
-.gdlr-skin-dark-skin .gdlr-button, .gdlr-skin-dark-skin .gdlr-button:hover, .gdlr-skin-dark-skin input[type="button"], .gdlr-skin-dark-skin input[type="submit"]{color: #ffffff; background-color: #39dde3;  }
-.gdlr-skin-dark-skin input[type="text"], .gdlr-skin-dark-skin input[type="email"], .gdlr-skin-dark-skin input[type="password"], .gdlr-skin-dark-skin textarea, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper select{  }
-.gdlr-skin-dark-skin input[type="text"], .gdlr-skin-dark-skin input[type="email"], .gdlr-skin-dark-skin input[type="password"], .gdlr-skin-dark-skin textarea, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper select, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper select option, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper{  }
+.gdlr-skin-dark-skin .gdlr-button, .gdlr-skin-dark-skin .gdlr-button:hover, .gdlr-skin-dark-skin input[type="button"], .gdlr-skin-dark-skin input[type="submit"]{ border-color: ; color: #ffffff; background-color: #39dde3;  }
+.gdlr-skin-dark-skin input[type="text"], .gdlr-skin-dark-skin input[type="email"], .gdlr-skin-dark-skin input[type="password"], .gdlr-skin-dark-skin textarea, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper select{ color: ; }
+.gdlr-skin-dark-skin input[type="text"], .gdlr-skin-dark-skin input[type="email"], .gdlr-skin-dark-skin input[type="password"], .gdlr-skin-dark-skin textarea, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper select, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper select option, .gdlr-skin-dark-skin .gdlr-hotel-availability .gdlr-combobox-wrapper{ background-color: ; }
 .gdlr-skin-dark-testimonial, .gdlr-skin-dark-testimonial .gdlr-skin-content{ color: #ffffff; }
 .gdlr-skin-dark-testimonial i, .gdlr-skin-dark-testimonial .gdlr-flex-prev, .gdlr-skin-dark-testimonial .gdlr-flex-next{ color: #ffffff; }
 .gdlr-skin-dark-testimonial h1, .gdlr-skin-dark-testimonial h2, .gdlr-skin-dark-testimonial h3, .gdlr-skin-dark-testimonial h4, .gdlr-skin-dark-testimonial h5, .gdlr-skin-dark-testimonial h6, .gdlr-skin-dark-testimonial .gdlr-skin-title, .gdlr-skin-dark-testimonial .gdlr-skin-title a{ color: #ffffff; }
@@ -257,9 +279,9 @@ html .woocommerce .quantity .minus, html .woocommerce #content .quantity .minus,
 .gdlr-skin-dark-testimonial a:hover, .gdlr-skin-dark-testimonial .gdlr-skin-link:hover{ color: #ffffff; }
 .gdlr-skin-dark-testimonial .gdlr-skin-box, .gdlr-skin-dark-testimonial .gdlr-column-service-item .gdlr-skin-box, .gdlr-skin-dark-testimonial .gdlr-flex-prev, .gdlr-skin-dark-testimonial .gdlr-flex-next{ background-color: #2b2b2b; }
 .gdlr-skin-dark-testimonial *, .gdlr-skin-dark-testimonial .gdlr-skin-border{ border-color: #ffffff; }
-.gdlr-skin-dark-testimonial .gdlr-button, .gdlr-skin-dark-testimonial .gdlr-button:hover, .gdlr-skin-dark-testimonial input[type="button"], .gdlr-skin-dark-testimonial input[type="submit"]{color: #ffffff; background-color: #ffffff;  }
-.gdlr-skin-dark-testimonial input[type="text"], .gdlr-skin-dark-testimonial input[type="email"], .gdlr-skin-dark-testimonial input[type="password"], .gdlr-skin-dark-testimonial textarea, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper select{ }
-.gdlr-skin-dark-testimonial input[type="text"], .gdlr-skin-dark-testimonial input[type="email"], .gdlr-skin-dark-testimonial input[type="password"], .gdlr-skin-dark-testimonial textarea, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper select, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper select option, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper{  }
+.gdlr-skin-dark-testimonial .gdlr-button, .gdlr-skin-dark-testimonial .gdlr-button:hover, .gdlr-skin-dark-testimonial input[type="button"], .gdlr-skin-dark-testimonial input[type="submit"]{ border-color: ; color: #ffffff; background-color: #ffffff;  }
+.gdlr-skin-dark-testimonial input[type="text"], .gdlr-skin-dark-testimonial input[type="email"], .gdlr-skin-dark-testimonial input[type="password"], .gdlr-skin-dark-testimonial textarea, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper select{ color: ; }
+.gdlr-skin-dark-testimonial input[type="text"], .gdlr-skin-dark-testimonial input[type="email"], .gdlr-skin-dark-testimonial input[type="password"], .gdlr-skin-dark-testimonial textarea, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper select, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper select option, .gdlr-skin-dark-testimonial .gdlr-hotel-availability .gdlr-combobox-wrapper{ background-color: ; }
 .gdlr-skin-light-grey, .gdlr-skin-light-grey .gdlr-skin-content{ color: #999999; }
 .gdlr-skin-light-grey i, .gdlr-skin-light-grey .gdlr-flex-prev, .gdlr-skin-light-grey .gdlr-flex-next{ color: #e0e0e0; }
 .gdlr-skin-light-grey h1, .gdlr-skin-light-grey h2, .gdlr-skin-light-grey h3, .gdlr-skin-light-grey h4, .gdlr-skin-light-grey h5, .gdlr-skin-light-grey h6, .gdlr-skin-light-grey .gdlr-skin-title, .gdlr-skin-light-grey .gdlr-skin-title a{ color: #b89f80; }
@@ -281,41 +303,6 @@ html .woocommerce .quantity .minus, html .woocommerce #content .quantity .minus,
 .gdlr-skin-dark-header a:hover, .gdlr-skin-dark-header .gdlr-skin-link:hover{ color: #ffffff; }
 .gdlr-skin-dark-header .gdlr-skin-box, .gdlr-skin-dark-header .gdlr-column-service-item .gdlr-skin-box, .gdlr-skin-dark-header .gdlr-flex-prev, .gdlr-skin-dark-header .gdlr-flex-next{ background-color: #ffffff; }
 .gdlr-skin-dark-header *, .gdlr-skin-dark-header .gdlr-skin-border{ border-color: #00abb7; }
-.gdlr-skin-dark-header .gdlr-button, .gdlr-skin-dark-header .gdlr-button:hover, .gdlr-skin-dark-header input[type="button"], .gdlr-skin-dark-header input[type="submit"]{ color: #ffffff; background-color: #39dde3;  }
-.gdlr-skin-dark-header input[type="text"], .gdlr-skin-dark-header input[type="email"], .gdlr-skin-dark-header input[type="password"], .gdlr-skin-dark-header textarea, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper select{ }
-.gdlr-skin-dark-header input[type="text"], .gdlr-skin-dark-header input[type="email"], .gdlr-skin-dark-header input[type="password"], .gdlr-skin-dark-header textarea, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper select, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper select option, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper{  }
-
-
-#paymentimg-container span img {
-	float: right !important;
-	width:60px  !important;
-	height: 40px !important;
-}
-#paymentimg-container span {
-	margin: 5px !important;
-	width: 60px !important;
-	height: 40px !important;
-	float: left;
-}
-
-.paymentbar .gdlr-combobox-wrapper{
-	width: 200px;
-	overflow: hidden;
-}
-
-.paymentbar select{
-	width: 350px;
-	background: rgb(245, 245, 245) none repeat scroll 0% 0%;
-	outline: medium none;
-	border:none;
-	padding: 13px 3%;
-	height: 40px;
-}
-.paymentbar select option {
-	margin: 5px;
-}
-
-.room-imagebox{
-	background-color: #e2e2e2;
-	border: 0.5px black solid;
-}
+.gdlr-skin-dark-header .gdlr-button, .gdlr-skin-dark-header .gdlr-button:hover, .gdlr-skin-dark-header input[type="button"], .gdlr-skin-dark-header input[type="submit"]{ border-color: ; color: #ffffff; background-color: #39dde3;  }
+.gdlr-skin-dark-header input[type="text"], .gdlr-skin-dark-header input[type="email"], .gdlr-skin-dark-header input[type="password"], .gdlr-skin-dark-header textarea, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper select{ color: ; }
+.gdlr-skin-dark-header input[type="text"], .gdlr-skin-dark-header input[type="email"], .gdlr-skin-dark-header input[type="password"], .gdlr-skin-dark-header textarea, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper select, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper select option, .gdlr-skin-dark-header .gdlr-hotel-availability .gdlr-combobox-wrapper{ background-color: ; }

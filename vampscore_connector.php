@@ -23,7 +23,7 @@ if (isset($_GET['command'])) {
     if ($command == 'login') {
         $email = $_GET['email'];
         $password = $_GET['password'];
-        $query = "SELECT username, email FROM wf_users WHERE email='" . $email . "' and password = '" . $password . "'";
+        $query = "SELECT username, email FROM wf_subscribers WHERE email='" . $email . "' and password = '" . $password . "'";
         $result = $conn->query($query);
         $count = $result->num_rows;
         if ($count > 0) {
@@ -70,7 +70,7 @@ if ($obj->action == 'user_registration') {
     $user = $obj->user;
 
     try {
-        $stmt = $conn->prepare("INSERT INTO wf_users (
+        $stmt = $conn->prepare("INSERT INTO wf_subscribers (
               tenantid,
               username,
               password,

@@ -175,8 +175,9 @@ if ($obj->action == 'hotel_booking') {
                 $crm_no_of_adults,
                 $crm_no_of_children,
                 $crm_assigned_user_id);
-
-            pushReservationToCRM($reservation_data);
+            
+        //  removing CRM reservation module
+        //   pushReservationToCRM($reservation_data);
             echo "New records created successfully";
         }
     } catch (PDOException $e) {

@@ -62,7 +62,6 @@ if (isset($_GET['command'])) {
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo $_POST['action'];
     if (isset($_POST['action']) && $_POST['action'] == 'user_mb_reg') {
         $tenantid = 15 ;
         try {
@@ -165,8 +164,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $crm_address_postalcode);
 
                 registerCRMUser($crm_registration_data);
-                echo "New records created successfully";
             }
+            $user = array("username" => $username, "email" => $email);
+            $response = array("status" => 1, "user" => $user);
+            echo json_encode($response);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

@@ -165,9 +165,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 registerCRMUser($crm_registration_data);
             }
-            $user = array("username" => $username, "email" => $email);
-            $response = array("status" => 1, "user" => $user);
-            echo json_encode($response);
+           $user = array("username" => $username, "email" => $email);
+           echo json_encode($user);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

@@ -87,7 +87,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Error: " . $e->getMessage();
         }
     }
-echo $_POST['action'];
     if (isset($_POST['action']) && $_POST['action'] == 'update_keyissued') {
         try {
             $updatestatus = "UPDATE h_booking SET key_issued = ? WHERE username= ?";
@@ -229,8 +228,6 @@ if ($obj->action == 'hotel_booking') {
                 $crm_no_of_adults,
                 $crm_no_of_children,
                 $crm_assigned_user_id);
-
-//            pushReservationToCRM($reservation_data);
             echo "New records created successfully";
         }
     } catch (PDOException $e) {

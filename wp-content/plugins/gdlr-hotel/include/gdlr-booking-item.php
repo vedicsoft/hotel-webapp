@@ -494,7 +494,7 @@
 		<div class="clear"></div>
 		<div class="message">
 			<p class="gdlr-form-half-left">
-				<span><?php _e('User Name *', 'gdlr-hotel'); ?></span>
+				<span><?php _e('Password *', 'gdlr-hotel'); ?></span>
 				<input type="text" name="password" id="contact-password"  />
 			</p>
 			<p class="gdlr-form-half-right">

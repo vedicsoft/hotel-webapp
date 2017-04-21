@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Error: " . $e->getMessage();
         }
     }
-
+echo $_POST['action'];
     if (isset($_POST['action']) && $_POST['action'] == 'update_keyissued') {
         try {
             $updatestatus = "UPDATE h_booking SET key_issued = ? WHERE username= ?";
@@ -107,6 +107,60 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Error: " . $e->getMessage();
         }
     }
+
+// table reserve
+
+    if (isset($_POST['action']) && $_POST['action'] == 'table_reserve') {
+        echo "table reserve";
+        try {
+            $stmt = $conn->prepare("INSERT INTO h_restaurant ( table_number, seats, status, assignee, guest_name, guest_requests, reserved_from, notes, last_updated) VALUES (?,?,?,?,?,?,?,?,NOW())");
+
+            $stmt->bind_param("iissssss", $table_number, $seats, $status, $assignee, $guest_name, $guest_requests, $reserved_from, $notes);
+
+            $table_number = isset($_POST['table_number']) ? $_POST['table_number'] : '';
+            $seats = isset($_POST['seats']) ? $_POST['seats'] : '';
+            $status = isset($_POST['status']) ? $_POST['status'] : '';
+            $assignee = isset($_POST['assignee']) ? $_POST['assignee'] : '';
+            $guest_name = isset($_POST['guest_name']) ? $_POST['guest_name'] : '';
+            $guest_requests = isset($_POST['guest_requests']) ? $_POST['guest_requests'] : '';
+            $reserved_from = isset($_POST['reserved_from']) ? $_POST['reserved_from'] : '';
+            $notes = isset($_POST['notes']) ? $_POST['notes'] : '';
+ 
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+// house keeping
+
+    if (isset($_POST['action']) && $_POST['action'] == 'housekeep') {
+        
+        try {
+            $stmt = $conn->prepare("INSERT INTO h_cleaning ( room_number, status, assignee, guest_requests, notes, last_updated) VALUES (?,?,?,?,?,NOW())");
+
+            $stmt->bind_param("issss", $room_number, $status, $assignee,  $guest_requests, $notes);
+
+            $room_number = isset($_POST['room_number']) ? $_POST['room_number'] : '';
+            $status = isset($_POST['status']) ? $_POST['status'] : '';
+            $assignee = isset($_POST['assignee']) ? $_POST['assignee'] : '';
+            $guest_requests = isset($_POST['guest_requests']) ? $_POST['guest_requests'] : '';
+            $notes = isset($_POST['notes']) ? $_POST['notes'] : '';
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
 
 
     // need to test
@@ -176,7 +230,7 @@ if ($obj->action == 'hotel_booking') {
                 $crm_no_of_children,
                 $crm_assigned_user_id);
 
-            pushReservationToCRM($reservation_data);
+//            pushReservationToCRM($reservation_data);
             echo "New records created successfully";
         }
     } catch (PDOException $e) {

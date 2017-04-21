@@ -1,7 +1,7 @@
 <?php
-$crm_url = "http://vamps.vedicsoft.net/crm/service/v4_1/rest.php";
-$crm_username = "crmadmin";
-$crm_password = "Vsoft@123";
+$crm_url = "http://www.vamps-qa.vedicsoft.net/crm779/service/v4_1/rest.php";
+$crm_username = "admin";
+$crm_password = "admin";
 
 //function to make cURL request
 function call($method, $parameters, $url)
@@ -61,7 +61,7 @@ function registerCRMUser($userdata)
         "module_name" => "Leads",
         "name_value_list" => $userdata
     );
-    $lead = call("set_entry", $register_parameters, $GLOBALS['crm_url']);
+$lead = call("set_entry", $register_parameters, $GLOBALS['crm_url']);
 }
 
 function pushReservationToCRM($reservation_data)

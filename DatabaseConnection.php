@@ -9,9 +9,9 @@
 class DatabaseConnection {
     private static $_connection;
     private static $_instance; //The single instance
-    private static $_host = "localhost:3306";
+    private static $_host = "www.vamps.vedicsoft.net:3306";
     private static $_username = "root";
-    private static $_password = "root";
+    private static $_password = "vamps";
 
     public static function getInstance($_database) {
         self::$_connection = new mysqli(self::$_host,self::$_username,

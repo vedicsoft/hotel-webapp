@@ -60,146 +60,6 @@ if (isset($_GET['command'])) {
     }
 }
 
-
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['action']) && $_POST['action'] == 'user_mb_reg') {
-        echo "sandun";
-        $tenantid = 15 ;
-        try {
-            $stmt = $conn->prepare("INSERT INTO wf_subscribers (
-              tenantid,
-              username,
-              password,
-              email,
-              first_name,
-              last_name,
-              mobile_number,
-              marital_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-
-            $stmt->bind_param("isssssss", $tenantid, $username, $password, $email, $first_name, $last_name,$mobile_number, $marital_status);
-
-//      account_status, gender, birthday, age, age_upper, age_lower, religion, occupation, profile_image, admin_notes
-//      $account_status, $first_name, $last_name, $gender, $birthday, $age, $age_upper, $age_lower, $religion, $occupation, $marital_status, $profile_image, $mobile_number, $admin_note
-
-            $username = isset($_POST['username']) ? $_POST['username'] : '';
-            $email = isset($_POST['email']) ? $_POST['email'] : '';
-            $password = isset($_POST['password']) ? $_POST['password'] : '';
-            $tenantid = 15;
-            $first_name = isset($_POST['first_name']) ? $_POST['first_name'] : '';
-            $last_name = isset($_POST['last_name']) ? $_POST['last_name'] : '';
-            $mobile_number = isset($_POST['phone']) ? $_POST['phone'] : '';
-            $marital_status = isset($_POST['marital']) ? $_POST['marital'] : '';
-            $age = isset($_POST['age']) ? $_POST['age'] : 0;
-            $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
-
-            $street = isset($_POST['street']) ? $_POST['street'] : '';
-            $city = isset($_POST['city']) ? $_POST['city'] : '';
-            $state = isset($_POST['state']) ? $_POST['state'] : '';
-            $postalcode = isset($_POST['postalcode']) ? $_POST['postalcode'] : '';
-            $country = isset($_POST['country']) ? $_POST['country'] : '';
-
-
-            if (!$stmt->execute()) {
-                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-            } else {
-                /*Provisioning the user to CRM*/
-                $crm_first_name = array(
-                    "name" => "first_name",
-                    "value" => $first_name
-                );
-                $crm_last_name = array(
-                    "name" => "last_name",
-                    "value" => $last_name
-                );
-                $crm_email = array(
-                    "name" => "email1",
-                    "value" => $email
-                );
-                $crm_phone_mobile = array(
-                    "name" => "phone_mobile",
-                    "value" => $mobile_number
-                );
-                $crm_age = array(
-                    "name" => "age_c",
-                    "value" => $age
-                );
-
-                $crm_gender = array(
-                    "name" => "gender_c",
-                    "value" => $gender
-                );
-
-                $crm_address_street = array(
-                    "name" => "primary_address_street",
-                    "value" => $street
-                );
-
-                $crm_address_city = array(
-                    "name" => "primary_address_city",
-                    "value" => $city
-                );
-
-                $crm_address_state = array(
-                    "name" => "primary_address_state",
-                    "value" => $state
-                );
-
-                $crm_address_country = array(
-                    "name" => "primary_address_country",
-                    "value" => $country
-                );
-
-                $crm_address_postalcode = array(
-                    "name" => "primary_address_postalcode",
-                    "value" => $postalcode
-                );
-
-                $crm_registration_data = array(
-                    $crm_first_name,
-                    $crm_last_name,
-                    $crm_email,
-                    $crm_phone_mobile,
-                    $crm_age,
-                    $crm_gender,
-                    $crm_address_street,
-                    $crm_address_city,
-                    $crm_address_state,
-                    $crm_address_country,
-                    $crm_address_postalcode);
-
-                registerCRMUser($crm_registration_data);
-                echo "New records created successfully";
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // POST Requests
 $data = file_get_contents('php://input');
 $obj = json_decode($data);
@@ -329,7 +189,119 @@ if ($obj->action == 'user_registration') {
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
-    } 
+    }
 }
-}  
+
+if ($obj->action == 'user_mb_reg') {
+    $tenantid = 15 ;
+    try {
+        $stmt = $conn->prepare("INSERT INTO wf_subscribers (
+              tenantid,
+              username,
+              password,
+              email,
+              first_name,
+              last_name,
+              mobile_number,
+              marital_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+        $stmt->bind_param("isssssss", $tenantid, $username, $password, $email, $first_name, $last_name,$mobile_number, $marital_status);
+
+//      account_status, gender, birthday, age, age_upper, age_lower, religion, occupation, profile_image, admin_notes
+//      $account_status, $first_name, $last_name, $gender, $birthday, $age, $age_upper, $age_lower, $religion, $occupation, $marital_status, $profile_image, $mobile_number, $admin_note
+
+        $username = isset($obj->username) ? $obj->username : '';
+        $email = isset($obj->email) ? $obj->email : '';
+        $password = isset($obj->password) ? $obj->password : '';
+        $tenantid = 15;
+        $first_name = isset($obj->first_name) ? $obj->first_name : '';
+        $last_name = isset($obj->last_name) ? $obj->last_name : '';
+        $mobile_number = isset($obj->phone) ? $obj->phone : '';
+        $marital_status = isset($obj->marital) ? $obj->marital : '';
+        $age = isset($obj->age) ? $obj->age : 0;
+        $gender = isset($obj->gender) ? $obj->gender : '';
+
+        $street = isset($obj->street) ? $obj->street : '';
+        $city = isset($obj->city) ? $obj->city : '';
+        $state = isset($obj->state) ? $obj->state : '';
+        $postalcode = isset($obj->postalcode) ? $obj->postalcode : '';
+        $country = isset($obj->country) ? $obj->country : '';
+        
+        
+        if (!$stmt->execute()) {
+            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+        } else {
+            /*Provisioning the user to CRM*/
+            $crm_first_name = array(
+                "name" => "first_name",
+                "value" => $first_name
+            );
+            $crm_last_name = array(
+                "name" => "last_name",
+                "value" => $last_name
+            );
+            $crm_email = array(
+                "name" => "email1",
+                "value" => $email
+            );
+            $crm_phone_mobile = array(
+                "name" => "phone_mobile",
+                "value" => $mobile_number
+            );
+            $crm_age = array(
+                "name" => "age_c",
+                "value" => $age
+            );
+
+            $crm_gender = array(
+                "name" => "gender_c",
+                "value" => $gender
+            );
+
+            $crm_address_street = array(
+                "name" => "primary_address_street",
+                "value" => $street
+            );
+
+            $crm_address_city = array(
+                "name" => "primary_address_city",
+                "value" => $city
+            );
+
+            $crm_address_state = array(
+                "name" => "primary_address_state",
+                "value" => $state
+            );
+
+            $crm_address_country = array(
+                "name" => "primary_address_country",
+                "value" => $country
+            );
+
+            $crm_address_postalcode = array(
+                "name" => "primary_address_postalcode",
+                "value" => $postalcode
+            );
+
+            $crm_registration_data = array(
+                $crm_first_name,
+                $crm_last_name,
+                $crm_email,
+                $crm_phone_mobile,
+                $crm_age,
+                $crm_gender,
+                $crm_address_street,
+                $crm_address_city,
+                $crm_address_state,
+                $crm_address_country,
+                $crm_address_postalcode);
+
+            registerCRMUser($crm_registration_data);
+            echo "New records created successfully";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 ?>

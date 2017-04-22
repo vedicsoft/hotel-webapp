@@ -160,6 +160,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    if (isset($_POST['action']) && $_POST['action'] == 'hotel_mb_booking') {
+        try {
+            $stmt = $conn->prepare("INSERT INTO h_booking (username, email, check_in, check_out, nights, room_id, room_number, no_of_adults, no_of_childrens, pay_deposite) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssiiiiii", $username, $email, $checkin, $checkout, $nights, $roomid, $room_number, $no_of_adults, $no_of_childrens, $deposit);
+
+            $username = isset($_POST['username']) ? $_POST['username'] : '';
+            $email = isset($userdetails->email) ? $userdetails->email : '';
+            $checkin = isset($userbooking->{'gdlr-check-in'}) ? $userbooking->{'gdlr-check-in'} : null;
+            $checkout = isset($userbooking->{'gdlr-check-out'}) ? $userbooking->{'gdlr-check-out'} : null;
+            $nights = isset($userbooking->{'gdlr-night'}) ? $userbooking->{'gdlr-night'} : 0;
+            $roomid = isset($userbooking->{'gdlr-room-id[]'}) ? $userbooking->{'gdlr-room-id[]'} : 0;
+            $room_number = isset($userbooking->{'gdlr-room-number'}) ? $userbooking->{'gdlr-room-number'} : 0;
+            $no_of_adults = isset($userbooking->{'gdlr-adult-number[]'}) ? $userbooking->{'gdlr-adult-number[]'} : 0;
+            $no_of_childrens = isset($userbooking->{'gdlr-children-number[]'}) ? $userbooking->{'gdlr-children-number[]'} : 0;
+            $deposit = isset($userbooking->{'pay_deposit'}) ? $userbooking->{'pay_deposit'} : 0;
+
+            if (!$stmt->execute()) {
+                echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            } else {
+                $crm_username_2 = array(
+                    "name" => "name",
+                    "value" => $username
+                );
+                $crm_roomtype = array(
+                    "name" => "roomtype",
+                    "value" => "king"
+                );
+                $crm_checkin = array(
+                    "name" => "checkin",
+                    "value" => $checkin
+                );
+                $crm_checkout = array(
+                    "name" => "checkout",
+                    "value" => $checkout
+                );
+                $crm_no_of_adults = array(
+                    "name" => "no_of_adult",
+                    "value" => $no_of_adults
+                );
+                $crm_no_of_children = array(
+                    "name" => "no_of_children",
+                    "value" => $no_of_childrens
+                );
+                $crm_assigned_user_id = array(
+                    "name" => "assigned_user_id",
+                    "value" => 1
+                );
+
+                $reservation_data = array(
+                    $crm_username_2,
+                    $crm_roomtype,
+                    $crm_checkin,
+                    $crm_checkout,
+                    $crm_no_of_adults,
+                    $crm_no_of_children,
+                    $crm_assigned_user_id);
+                echo "New records created successfully";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
     // need to test
 
@@ -170,7 +232,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $userdetails = $obj->contact;
         $userbooking = $obj->data;
-
         try {
             $stmt = $conn->prepare("INSERT INTO h_booking (username, email, check_in, check_out, nights, room_id, room_number, no_of_adults, no_of_childrens, pay_deposite) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -233,6 +294,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Error: " . $e->getMessage();
         }
     }
-
     $conn->close();
 }

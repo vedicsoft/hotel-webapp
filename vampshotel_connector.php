@@ -166,15 +166,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("ssssiiiiii", $username, $email, $checkin, $checkout, $nights, $roomid, $room_number, $no_of_adults, $no_of_childrens, $deposit);
 
             $username = isset($_POST['username']) ? $_POST['username'] : '';
-            $email = isset($userdetails->email) ? $userdetails->email : '';
-            $checkin = isset($userbooking->{'gdlr-check-in'}) ? $userbooking->{'gdlr-check-in'} : null;
-            $checkout = isset($userbooking->{'gdlr-check-out'}) ? $userbooking->{'gdlr-check-out'} : null;
-            $nights = isset($userbooking->{'gdlr-night'}) ? $userbooking->{'gdlr-night'} : 0;
-            $roomid = isset($userbooking->{'gdlr-room-id[]'}) ? $userbooking->{'gdlr-room-id[]'} : 0;
-            $room_number = isset($userbooking->{'gdlr-room-number'}) ? $userbooking->{'gdlr-room-number'} : 0;
-            $no_of_adults = isset($userbooking->{'gdlr-adult-number[]'}) ? $userbooking->{'gdlr-adult-number[]'} : 0;
-            $no_of_childrens = isset($userbooking->{'gdlr-children-number[]'}) ? $userbooking->{'gdlr-children-number[]'} : 0;
-            $deposit = isset($userbooking->{'pay_deposit'}) ? $userbooking->{'pay_deposit'} : 0;
+            $email = isset($_POST['email']) ? $_POST['email'] : '';
+            $checkin = isset($_POST['chek_in_time']) ? $_POST['chek_in_time'] : '';
+            $checkout = isset($_POST['chek_out_time']) ? $_POST['chek_out_time'] : '';
+            $nights = isset($_POST['night-count']) ? $_POST['night-count'] : '';
+            $roomid = isset($_POST['room_id']) ? $_POST['room_id'] : '';
+            $room_number = isset($_POST['room_number']) ? $_POST['room_number'] : '';
+            $no_of_adults = isset($_POST['no_of_adults']) ? $_POST['no_of_adults'] : '';
+            $no_of_childrens = isset($_POST['no_of_childrens']) ? $_POST['no_of_childrens'] : '';
+            $deposit = isset($_POST['deposit']) ? $_POST['deposit'] : '';
 
             if (!$stmt->execute()) {
                 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;

@@ -162,8 +162,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['action']) && $_POST['action'] == 'hotel_mb_booking') {
         try {
-            $stmt = $conn->prepare("INSERT INTO h_booking (username, email, check_in, check_out, nights, room_id, room_number, no_of_adults, no_of_childrens, pay_deposite) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssiiiiii", $username, $email, $checkin, $checkout, $nights, $roomid, $room_number, $no_of_adults, $no_of_childrens, $deposit);
+            $stmt = $conn->prepare("INSERT INTO h_booking (username, email, check_in, check_out, nights, room_id, room_number, no_of_adults, no_of_childrens, pay_deposite) VALUES ( ?, ?, now(), now(), ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssiiiiii", $username, $email, $nights, $roomid, $room_number, $no_of_adults, $no_of_childrens, $deposit);
 
             $username = isset($_POST['username']) ? $_POST['username'] : '';
             $email = isset($_POST['email']) ? $_POST['email'] : '';

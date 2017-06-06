@@ -167,12 +167,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $username = isset($_POST['username']) ? $_POST['username'] : '';
             $email = isset($_POST['email']) ? $_POST['email'] : '';
-            $in = isset($_POST['chek_in_time']) ? $_POST['chek_in_time'] : '';
-            $checkin = date_create_from_format('d/M/Y:H:i:s', $in);
-            $checkin->getTimestamp();
-            $out = isset($_POST['chek_out_time']) ? $_POST['chek_out_time'] : '';
-            $checkout = date_create_from_format('d/M/Y:H:i:s', $out);
-            $checkout->getTimestamp();
+            $checkin = isset($_POST['chek_in_time']) ? $_POST['chek_in_time'] : '';
+            $checkout = isset($_POST['chek_out_time']) ? $_POST['chek_out_time'] : '';
             $nights = isset($_POST['night-count']) ? $_POST['night-count'] : '';
             $roomid = isset($_POST['room_id']) ? $_POST['room_id'] : '';
             $room_number = isset($_POST['room_number']) ? $_POST['room_number'] : '';
